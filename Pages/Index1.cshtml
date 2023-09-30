@@ -6,59 +6,80 @@
 <html>
 <head>
     <style>
-        #navPanel {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 200px;
-            height: 100%;
-            background-color: ThreeDDarkShadow;
-            color: burlywood;
-            padding: 20px;
-        }
-        #entry {
-            position: absolute;
-            left: 300px;
-            top: 100px;
-            width: 950px;
-            height: 95px;
-            background-color: blueviolet;
-            color: burlywood;
-            padding: 30px;
-        }
-        #entry1 {
-            position: absolute;
-            left: 300px;
-            top: 400px;
-            width: 950px;
-            height: 200px;
-            background-color: blueviolet;
-            color: burlywood;
-            padding: 30px;
-        }
-        #entry2 {
-            position: absolute;
-            left: 300px;
-            top: 190px;
-            width: 950px;
-            height: 215px;
-            background-color: blueviolet;
-            color: burlywood;
-            padding: 30px;
-        }
-        #settingsLink {
-            color: #ccc;
-            pointer-events: none;
-            text-decoration: none;
-        }
-        #dateTime {
-            position: absolute;
-            left: 1225px;
-            top: 50px;
-            font-size: 18px;
-            color: black;
-            width: 116px;
-        }
+       #navPanel {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #333; /* Dark background color */
+    color: #fff; /* Light text color */
+    padding: 20px;
+    overflow-y: auto; /* Add scrollbar for long content */
+}
+
+#entry {
+    margin-left: 260px; /* Maintain margin-left */
+    padding: 30px; /* Maintain padding */
+    background-color: #f0f0f0; /* Light background color */
+    color: #333; /* Dark text color */
+    border: 1px solid #ccc; /* Add a subtle border */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+#entry1 {
+    margin-left: 260px; /* Maintain margin-left */
+    margin-top: 20px; /* Add space between sections */
+    padding: 30px; /* Maintain padding */
+    background-color: #f0f0f0; /* Light background color */
+    color: #333; /* Dark text color */
+    border: 1px solid #ccc; /* Add a subtle border */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+#entry2 {
+    margin-left: 260px; /* Maintain margin-left */
+    margin-top: 20px; /* Add space between sections */
+    padding: 30px; /* Maintain padding */
+    background-color: #f0f0f0; /* Light background color */
+    color: #333; /* Dark text color */
+    border: 1px solid #ccc; /* Add a subtle border */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+#settingsLink {
+    color: #999; /* Softer link color */
+    text-decoration: none;
+}
+
+#dateTime {
+    position: absolute;
+    right: 20px; /* Adjust position */
+    top: 20px; /* Adjust position */
+    font-size: 18px;
+    color: #333; /* Dark text color */
+    width: 150px; /* Increase width for better visibility */
+}
+
+/* Modern Button Style */
+button {
+    background-color: #007bff; /* Blue button color */
+    color: #fff; /* Light text color */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add hover effect */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
         header {
             background-color: gray;
             color: wheat;
@@ -67,9 +88,52 @@
             padding: 0px;
             text-align: center;
         }
-        th {
-            padding: 10px;
-        }
+
+        /* Improved Styles for Textboxes and Labels */
+/* Textbox Styles */
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #007bff; /* Highlight border on focus */
+}
+
+/* Label Styles */
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Button Styles */
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
     </style>
 </head>
 <body>
