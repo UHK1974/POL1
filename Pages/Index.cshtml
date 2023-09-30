@@ -4,278 +4,722 @@
     ViewData["Title"] = "Home page";
 }
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        /* CSS for navigation panel (left side) */
-        header {
-            background-color: gray;
-            color: wheat;
-            left: auto;
-            top: auto;
-            padding: 0px;
-            text-align: center;
-        }
-        #navPanel {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 200px;
-            height: 100%;
-            background-color: ThreeDDarkShadow;
-            color: burlywood;
-            padding: 20px;
-        }
-        #navPanel1 {
-            position: absolute;
-            left: 275px;
-            top: 150px;
-            width: 275px;
-            height: 115px;
-            background-color: whitesmoke;
-            color: black;
-            padding: 10px;
-            border: groove;
-        }
-        #navPanel2 {
-            position: absolute;
-            left: 625px;
-            top: 150px;
-            width: 275px;
-            height: 115px;
-            background-color: whitesmoke;
-            color: black;
-            padding: 10px;
-            border: groove;
-        }
-        #navPanel3 {
-            position: absolute;
-            left: 975px;
-            top: 150px;
-            width: 275px;
-            height: 115px;
-            background-color: whitesmoke;
-            color: black;
-            padding: 10px;
-            border: groove;
-        }
-        /* CSS for current date and time (leftmost corner) */
-        #dateTime {
-            position: absolute;
-            left: 1225px;
-            top: 50px;
-            font-size: 18px;
-            color: black;
-            width: 116px;
-        }
-        /* CSS for graphs (centered) */
-        #graphContainer {
-            position: absolute;
-            top: 400px;
-            left: 400px;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            text-align: center;
-            height: 150px;
-        }
-        #graphContainer1 {
-            position: absolute;
-            top: 400px;
-            left: 750px;
-            transform: translate(-50%, -50%); /* Center both horizontally and vertically */
-            width: 300px;
-            text-align: center;
-            height: 150px;
-        }
-        #graphContainer2 {
-            position: absolute;
-            top: 400px;
-            left: 1100px;
-            transform: translate(-50%, -50%); /* Center both horizontally and vertically */
-            width: 300px;
-            text-align: center;
-            height: 150px;
-        }
-        .auto-style1 {
-            border-style: none;
-            border-color: aquamarine;
-            border-width: thick;
-            position: absolute;
-            top: 100px;
-            left: 325px;
-            display: round;
-            margin: 10px 20px;
-            padding: 0px;
-            background-color: #ff6a00;
-            color: #000000;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-            width: 119px;
-        }
-        .auto-style2 {
-            border-style: none;
-            border-color: inherit;
-            border-width: medium;
-            position: absolute;
-            top: 100px;
-            left: 650px;
-            display: round;
-            margin: 10px 20px;
-            padding: 0px;
-            background-color: #007bff;
-            color: #ffd800;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-            width: 125px;
-        }
-        .auto-style3 {
-            border-style: none;
-            border-color: inherit;
-            border-width: medium;
-            position: absolute;
-            top: 100px;
-            left: 975px;
-            display: round;
-            margin: 10px 20px;
-            padding: 0px;
-            background-color: #007bff;
-            color: #4cff00;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-            width: 125px;
-        }
-        .auto-style4 {
-            left: 298px;
-            top: 224px;
-            width: 570px;
-        }
-        .auto-style5 {
-            height: 125px;
-            margin-left: 243px;
-            width: 633px;
-        }
-        .auto-style6 {
-            left: 1200px;
-            top: 20px;
-            color: aqua;
-        }
-        #settingsLink {
-            color: #ccc;
-            pointer-events: none;
-            text-decoration: none;
-        }
-    </style>    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <title>
+        Material Dashboard 2 by Creative Tim
+    </title>
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+    <!-- Nucleo Icons -->
+    <link href="~/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="~/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
+    <!-- CSS Files -->
+    <link href="~/css/material-dashboard.css" rel="stylesheet" />
+    <link href="~/css/material-dashboard.min.css" rel="stylesheet" />    <!-- Nepcha Analytics (nepcha.com) -->
+    <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
+    <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
 </head>
-<body>
-    <div class="text-center">
-        <h1 class="display-4">POL</h1>
-        <!-- Other content of your page goes here -->
+
+<body class="g-sidenav-show  bg-gray-200">
+    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
+        <div class="sidenav-header">
+            <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+            <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard " target="_blank">
+                <img src="~/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
+                <span class="ms-1 font-weight-bold text-white">Inventory Management</span>
+            </a>
+        </div>
+        <hr class="horizontal light mt-0 mb-2">
+        <!-- SideBar --><!-- SideBar --><!-- SideBar --><!-- SideBar --><!-- SideBar --><!-- SideBar --><!-- SideBar -->
+        <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+            <ul class="navbar-nav">
+           
+                <li class="nav-item">
+                    <a class="nav-link text-white active bg-gradient-primary " href="/Index">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/Index1">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Receipt</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="../pages/rtl.html">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Add New Item</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="../pages/notifications.html">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">notifications</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Add Supplier</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="../pages/profile.html">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">person</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Inventory Report</span>
+                    </a>
+                </li>
+                <li class="nav-item mt-3">
+                    <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="../pages/sign-in.html">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">login</i>
+                        </div>
+                        <span class="nav-link-text ms-1">User Setting</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="../pages/sign-up.html">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">assignment</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Admon Setting</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--End Side bar--><!--End Side bar--><!--End Side bar--><!--End Side bar--><!--End Side bar-->
+    </aside>
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        <!-- Navbar --><!-- Navbar --><!-- Navbar --><!-- Navbar --><!-- Navbar --><!-- Navbar --><!-- Navbar --><!-- Navbar --><!-- Navbar --><!-- Navbar -->
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
+            <div class="container-fluid py-1 px-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
+                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
+                    </ol>
+                    <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+                </nav>
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                    <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                        <div class="input-group input-group-outline">
+                            <label class="form-label">Type here...</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <ul class="navbar-nav  justify-content-end">
+                        @*  <li class="nav-item d-flex align-items-center">
+                        <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank" href="https://www.creative-tim.com/builder?ref=navbar-material-dashboard">Online Builder</a>
+                        </li>
+                        <li class="mt-2">
+                        <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star creativetimofficial/material-dashboard on GitHub">Star</a>
+                        </li>*@
+                        <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                                <div class="sidenav-toggler-inner">
+                                    <i class="sidenav-toggler-line"></i>
+                                    <i class="sidenav-toggler-line"></i>
+                                    <i class="sidenav-toggler-line"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item px-3 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-body p-0">
+                                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+                            </a>
+                        </li>
+
+                        <li class="nav-item d-flex align-items-center">
+                            <a class="nav-link text-body font-weight-bold px-0">
+                                <i class="fa fa-user me-sm-1"></i>
+
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- End Navbar --><!-- End Navbar --><!-- End Navbar --><!-- End Navbar --><!-- End Navbar -->
+        <div class="container-fluid py-4">
+            <div class="row">
+                <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                    <div class="card">
+                        <div class="card-header p-3 pt-2">
+                            <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                                <i class="material-icons opacity-10">weekend</i>
+                            </div>
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">Today's Money</p>
+                                <h4 class="mb-0">$53k</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                        <div class="card-footer p-3">
+                            <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than last week</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                    <div class="card">
+                        <div class="card-header p-3 pt-2">
+                            <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+                                <i class="material-icons opacity-10">person</i>
+                            </div>
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">Today's Users</p>
+                                <h4 class="mb-0">2,300</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                        <div class="card-footer p-3">
+                            <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+3% </span>than last month</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                    <div class="card">
+                        <div class="card-header p-3 pt-2">
+                            <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+                                <i class="material-icons opacity-10">person</i>
+                            </div>
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">New Clients</p>
+                                <h4 class="mb-0">3,462</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                        <div class="card-footer p-3">
+                            <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">-2%</span> than yesterday</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-header p-3 pt-2">
+                            <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+                                <i class="material-icons opacity-10">weekend</i>
+                            </div>
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">Sales</p>
+                                <h4 class="mb-0">$103,430</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                        <div class="card-footer p-3">
+                            <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+5% </span>than yesterday</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-4 col-md-6 mt-4 mb-4">
+                    <div class="card z-index-2 ">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+                            <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
+                                <div class="chart">
+                                    <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="mb-0 ">Users</h6>
+                            <p class="text-sm ">Last Campaign Performance</p>
+                            <hr class="dark horizontal">
+                            <div class="d-flex ">
+                                <i class="material-icons text-sm my-auto me-1">schedule</i>
+                                <p class="mb-0 text-sm"> campaign sent 2 days ago </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-4 mb-4">
+                    <div class="card z-index-2  ">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+                            <div class="bg-gradient-success shadow-success border-radius-lg py-3 pe-1">
+                                <div class="chart">
+                                    <canvas id="chart-line" class="chart-canvas" height="170"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="mb-0 "> Daily Sales </h6>
+                            <p class="text-sm "> (<span class="font-weight-bolder">+15%</span>) increase in today sales. </p>
+                            <hr class="dark horizontal">
+                            <div class="d-flex ">
+                                <i class="material-icons text-sm my-auto me-1">schedule</i>
+                                <p class="mb-0 text-sm"> updated 4 min ago </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-4 mb-3">
+                    <div class="card z-index-2 ">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+                            <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
+                                <div class="chart">
+                                    <canvas id="chart-line-tasks" class="chart-canvas" height="170"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="mb-0 ">New Clients</h6>
+                            <p class="text-sm ">Last Campaign Performance</p>
+                            <hr class="dark horizontal">
+                            <div class="d-flex ">
+                                <i class="material-icons text-sm my-auto me-1">schedule</i>
+                                <p class="mb-0 text-sm">just updated</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row  mb-4">
+            </div>
+
+        </div>
+    </main>
+    <div class="fixed-plugin">
+        <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+            <i class="material-icons py-2">settings</i>
+        </a>
+        <div class="card shadow-lg">
+            <div class="card-header pb-0 pt-3">
+                <div class="float-start">
+                    <h5 class="mt-3 mb-0">Material UI Configurator</h5>
+                    <p>See our dashboard options.</p>
+                </div>
+                <div class="float-end mt-4">
+                    <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+                        <i class="material-icons">clear</i>
+                    </button>
+                </div>
+                <!-- End Toggle Button -->
+            </div>
+            <hr class="horizontal dark my-1">
+            <div class="card-body pt-sm-3 pt-0">
+                <!-- Sidebar Backgrounds -->
+                <div>
+                    <h6 class="mb-0">Sidebar Colors</h6>
+                </div>
+                <a href="javascript:void(0)" class="switch-trigger background-color">
+                    <div class="badge-colors my-2 text-start">
+                        <span class="badge filter bg-gradient-primary active" data-color="primary" onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
+                    </div>
+                </a>
+                <!-- Sidenav Type -->
+                <div class="mt-3">
+                    <h6 class="mb-0">Sidenav Type</h6>
+                    <p class="text-sm">Choose between 2 different sidenav types.</p>
+                </div>
+                <div class="d-flex">
+                    <button class="btn bg-gradient-dark px-3 mb-2 active" data-class="bg-gradient-dark" onclick="sidebarType(this)">Dark</button>
+                    <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
+                    <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-white" onclick="sidebarType(this)">White</button>
+                </div>
+                <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
+                <!-- Navbar Fixed -->
+                <div class="mt-3 d-flex">
+                    <h6 class="mb-0">Navbar Fixed</h6>
+                    <div class="form-check form-switch ps-0 ms-auto my-auto">
+                        <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
+                    </div>
+                </div>
+                <hr class="horizontal dark my-3">
+                <div class="mt-2 d-flex">
+                    <h6 class="mb-0">Light / Dark</h6>
+                    <div class="form-check form-switch ps-0 ms-auto my-auto">
+                        <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onclick="darkMode(this)">
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
-    <form id="form1" runat="server">
-
-        <div id="navPanel">
-            <!-- Navigation panel content with icons -->
-            <h2>Navigation Panel</h2>
-            <ul>
-                <li><i class="fas fa-envelope"></i> <a href="/Index1">Receipt</a></li>
-                <li><i class="fas fa-book"></i> <a href="/Index2">Add New Item</a></li>
-                <li><i class="fas fa-cog"></i> <a href="/Index3">Add New Supplier</a></li>
-                <li><i class="fas fa-book-bookmark"></i> <a href="#">Inventory Report</a></li>
-                <li><i class="fas fa-cog"></i> <a id="settingsLink" href="#">User Settings</a></li>
-                <li><i class="fas fa-cog"></i> <a id="settingsLink" href="#">Admin Settings</a></li>
-            </ul>
-        </div>
-
-        <div id="dateTime">
-            <span id="clock"></span>
-        </div>
-
-        <div id="content">
-            <button id="button2" class="auto-style1" type="button">Button 1</button>
-            <button id="button3" class="auto-style2" type="button">Button 2</button>
-            <button id="button1" class="auto-style3" type="button">Button 3</button>
-        </div>
-
-        <div id="graphContainer" class="auto-style4">
-            <!-- Chart.js graph will be inserted here -->
-            <canvas id="myChart"></canvas>
-        </div>
-        <div id="graphContainer1" class="auto-style4">
-            <!-- Chart.js graph will be inserted here -->
-            <canvas id="myChart1"></canvas>
-        </div>
-
-        <div id="graphContainer2" class="auto-style4">
-            <!-- Chart.js graph will be inserted here -->
-            <canvas id="myChart2"></canvas>
-        </div>
-
-        <div id="navPanel1" class="auto-style4">
-            <!-- Add text, icons, and values using HTML and Razor controls -->
-            <h4>Inventory</h4>
-            <ul>
-                <li>
-                    <i class="fas fa-book-bookmark"></i>
-                    <a asp-page="Inventory">Inventory</a>
-                    <span class="value">10</span>
-                </li>
-                <li>
-                    <i class="fas fa-envelope"></i>
-                    <a asp-page="HRInventory">HR Inventory</a>
-                    <span class="value">25</span>
-                </li>
-                <!-- Add more list items as needed -->
-            </ul>
-        </div>
-
-        <div id="navPanel2" class="auto-style4">
-            <!-- Add text, icons, and values using HTML and Razor controls -->
-            <h4>Inventory</h4>
-            <ul>
-                <li>
-                    <i class="fas fa-book-bookmark"></i>
-                    <a asp-page="Inventory">Inventory</a>
-                    <span class="value">10</span>
-                </li>
-                <li>
-                    <i class="fas fa-envelope"></i>
-                    <a asp-page="HRInventory">HR Inventory</a>
-                    <span class="value">25</span>
-                </li>
-                <!-- Add more list items as needed -->
-            </ul>
-        </div>
-
-        <div id="navPanel3" class="auto-style4">
-            <!-- Add text, icons, and values using HTML and Razor controls -->
-            <h4>Inventory</h4>
-            <ul>
-                <li>
-                    <i class="fas fa-book-bookmark"></i>
-                    <a asp-page="Inventory">Inventory</a>
-                    <span class="value">10</span>
-                </li>
-                <li>
-                    <i class="fas fa-envelope"></i>
-                    <a asp-page="HRInventory">HR Inventory</a>
-                    <span class="value">25</span>
-                </li>
-                <!-- Add more list items as needed -->
-            </ul>
-        </div>
-    </form>
+    <!--   Core JS Files   -->
+    <script src="~/js/core/popper.min.js"></script>
+    <script src="~/js/core/bootstrap.min.js"></script>
+    <script src="~/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="~/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="~/js/plugins/chartjs.min.js"></script>
 
     <script>
+        var ctx = document.getElementById("chart-bars").getContext("2d");
+
+        new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: ["M", "T", "W", "T", "F", "S", "S"],
+                datasets: [{
+                    label: "Sales",
+                    tension: 0.4,
+                    borderWidth: 0,
+                    borderRadius: 4,
+                    borderSkipped: false,
+                    backgroundColor: "rgba(255, 255, 255, .8)",
+                    data: [50, 20, 10, 22, 50, 10, 40],
+                    maxBarThickness: 6
+                },],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false,
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                },
+                scales: {
+                    y: {
+                        grid: {
+                            drawBorder: false,
+                            display: true,
+                            drawOnChartArea: true,
+                            drawTicks: false,
+                            borderDash: [5, 5],
+                            color: 'rgba(255, 255, 255, .2)'
+                        },
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 500,
+                            beginAtZero: true,
+                            padding: 10,
+                            font: {
+                                size: 14,
+                                weight: 300,
+                                family: "Roboto",
+                                style: 'normal',
+                                lineHeight: 2
+                            },
+                            color: "#fff"
+                        },
+                    },
+                    x: {
+                        grid: {
+                            drawBorder: false,
+                            display: true,
+                            drawOnChartArea: true,
+                            drawTicks: false,
+                            borderDash: [5, 5],
+                            color: 'rgba(255, 255, 255, .2)'
+                        },
+                        ticks: {
+                            display: true,
+                            color: '#f8f9fa',
+                            padding: 10,
+                            font: {
+                                size: 14,
+                                weight: 300,
+                                family: "Roboto",
+                                style: 'normal',
+                                lineHeight: 2
+                            },
+                        }
+                    },
+                },
+            },
+        });
+
+
+        var ctx2 = document.getElementById("chart-line").getContext("2d");
+
+        new Chart(ctx2, {
+            type: "line",
+            data: {
+                labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                datasets: [{
+                    label: "Mobile apps",
+                    tension: 0,
+                    borderWidth: 0,
+                    pointRadius: 5,
+                    pointBackgroundColor: "rgba(255, 255, 255, .8)",
+                    pointBorderColor: "transparent",
+                    borderColor: "rgba(255, 255, 255, .8)",
+                    borderColor: "rgba(255, 255, 255, .8)",
+                    borderWidth: 4,
+                    backgroundColor: "transparent",
+                    fill: true,
+                    data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
+                    maxBarThickness: 6
+
+                }],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false,
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                },
+                scales: {
+                    y: {
+                        grid: {
+                            drawBorder: false,
+                            display: true,
+                            drawOnChartArea: true,
+                            drawTicks: false,
+                            borderDash: [5, 5],
+                            color: 'rgba(255, 255, 255, .2)'
+                        },
+                        ticks: {
+                            display: true,
+                            color: '#f8f9fa',
+                            padding: 10,
+                            font: {
+                                size: 14,
+                                weight: 300,
+                                family: "Roboto",
+                                style: 'normal',
+                                lineHeight: 2
+                            },
+                        }
+                    },
+                    x: {
+                        grid: {
+                            drawBorder: false,
+                            display: false,
+                            drawOnChartArea: false,
+                            drawTicks: false,
+                            borderDash: [5, 5]
+                        },
+                        ticks: {
+                            display: true,
+                            color: '#f8f9fa',
+                            padding: 10,
+                            font: {
+                                size: 14,
+                                weight: 300,
+                                family: "Roboto",
+                                style: 'normal',
+                                lineHeight: 2
+                            },
+                        }
+                    },
+                },
+            },
+        });
+
+        var ctx3 = document.getElementById("chart-line-tasks").getContext("2d");
+
+        new Chart(ctx3, {
+            type: "line",
+            data: {
+                labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                datasets: [{
+                    label: "Mobile apps",
+                    tension: 0,
+                    borderWidth: 0,
+                    pointRadius: 5,
+                    pointBackgroundColor: "rgba(255, 255, 255, .8)",
+                    pointBorderColor: "transparent",
+                    borderColor: "rgba(255, 255, 255, .8)",
+                    borderWidth: 4,
+                    backgroundColor: "transparent",
+                    fill: true,
+                    data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                    maxBarThickness: 6
+
+                }],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false,
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                },
+                scales: {
+                    y: {
+                        grid: {
+                            drawBorder: false,
+                            display: true,
+                            drawOnChartArea: true,
+                            drawTicks: false,
+                            borderDash: [5, 5],
+                            color: 'rgba(255, 255, 255, .2)'
+                        },
+                        ticks: {
+                            display: true,
+                            padding: 10,
+                            color: '#f8f9fa',
+                            font: {
+                                size: 14,
+                                weight: 300,
+                                family: "Roboto",
+                                style: 'normal',
+                                lineHeight: 2
+                            },
+                        }
+                    },
+                    x: {
+                        grid: {
+                            drawBorder: false,
+                            display: false,
+                            drawOnChartArea: false,
+                            drawTicks: false,
+                            borderDash: [5, 5]
+                        },
+                        ticks: {
+                            display: true,
+                            color: '#f8f9fa',
+                            padding: 10,
+                            font: {
+                                size: 14,
+                                weight: 300,
+                                family: "Roboto",
+                                style: 'normal',
+                                lineHeight: 2
+                            },
+                        }
+                    },
+                },
+            },
+        });
+    </script>
+    <script type="text/javascript">
+        window.addEventListener('DOMContentLoaded', (evt) => {
+            // Hide all tables by default
+            document.getElementById('OutgoingShipment').style.display = 'none';
+            document.getElementById('IncomingShipment').style.display = 'none';
+            document.getElementById('InternalIssuance').style.display = 'none';
+            document.getElementById('InternalReceive').style.display = 'none';
+            document.getElementById('UnclosedTransactions').style.display = 'none';
+
+            var dropdown = document.getElementById('ddlTransactionType');
+            if (dropdown) {
+                dropdown.addEventListener('change', function () {
+                    var selectedValue = dropdown.value;
+                    showTable(selectedValue);
+                });
+            } else {
+                console.error("Dropdown element not found.");
+            }
+        });
+
+        function showTable(selectedValue) {
+            // Hide all tables by default
+            document.getElementById('OutgoingShipment').style.display = 'none';
+            document.getElementById('IncomingShipment').style.display = 'none';
+            document.getElementById('InternalIssuance').style.display = 'none';
+            document.getElementById('InternalReceive').style.display = 'none';
+            document.getElementById('UnclosedTransactions').style.display = 'none';
+            // Show the table based on the selected option
+            if (selectedValue === 'OutgoingShipment') {
+                document.getElementById('OutgoingShipment').style.display = 'block';
+            } else if (selectedValue === 'IncomingShipment') {
+                document.getElementById('IncomingShipment').style.display = 'block';
+            } else if (selectedValue === 'InternalIssuance') {
+                document.getElementById('InternalIssuance').style.display = 'block';
+            } else if (selectedValue === 'InternalReceive') {
+                document.getElementById('InternalReceive').style.display = 'block';
+            } else if (selectedValue === 'UnclosedTransactions') {
+                document.getElementById('UnclosedTransactions').style.display = 'block';
+            }
+            else {
+                return false;
+            }
+        }
+
+        function isNumeric(evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+
+            // Allow numeric digits (0-9), backspace, arrow keys, and the period ('.') character
+            if ((charCode >= 48 && charCode <= 57) || charCode === 8 || charCode === 37 || charCode === 39 || charCode === 46) {
+                return true;
+            }
+        }
+
+        function addRow() {
+            var table = document.querySelector('.inventory-table'); // Select the table by class
+            var newRow = table.insertRow(table.rows.length); // Add a new row at the end
+
+            // Create cells for the new row
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            var cell4 = newRow.insertCell(3);
+            var cell5 = newRow.insertCell(4);
+            var cell6 = newRow.insertCell(5);
+            var cell7 = newRow.insertCell(6);
+
+            // Create select elements for the cells
+            var dropdown1 = document.createElement('select');
+            var dropdown2 = document.createElement('select');
+            var dropdown3 = document.createElement('select');
+            var dropdown4 = document.createElement('select');
+            var dropdown5 = document.createElement('select');
+            var textbox = document.createElement('input');
+            var statusDropdown = document.createElement('select');
+
+            // Set the options for the select elements (you can customize these)
+            dropdown1.innerHTML = '<option value="">Select Item</option><option value="1">Item 1</option><option value="2">Item 2</option><option value="3">Item 3</option>';
+            dropdown2.innerHTML = '<option value="">Select Item Code</option><option value="1">Code 1</option><option value="2">Code 2</option><option value="3">Code 3</option>';
+            dropdown3.innerHTML = '<option value="">Select Description</option><option value="1">Description 1</option><option value="2">Description 2</option><option value="3">Description 3</option>';
+            dropdown4.innerHTML = '<option value="">Select Category</option><option value="1">Category 1</option><option value="2">Category 2</option><option value="3">Category 3</option>';
+            dropdown5.innerHTML = '<option value="">Select UOM</option><option value="1">UOM 1</option><option value="2">UOM 2</option><option value="3">UOM 3</option>';
+
+            // Set attributes for the input field
+            textbox.type = 'text';
+            textbox.name = 'Quantity';
+            textbox.onkeypress = function (event) {
+                return isNumeric(event);
+            };
+            textbox.style.width = '65px';
+
+            statusDropdown.innerHTML = '<option value="Returnable">Returnable</option><option value="NonReturnable">Non Returnable</option>';
+
+            // Append the select elements and input field to the cells
+            cell1.appendChild(dropdown1);
+            cell2.appendChild(dropdown2);
+            cell3.appendChild(dropdown3);
+            cell4.appendChild(dropdown4);
+            cell5.appendChild(dropdown5);
+            cell6.appendChild(textbox);
+            cell7.appendChild(statusDropdown);
+
+            return false;
+        }
+
+
         function updateClock() {
             var now = new Date();
             var clockElement = document.getElementById('clock');
@@ -294,131 +738,25 @@
 
         // Initial update
         updateClock();
-    </script>
 
+    </script>
     <script>
-        // Get a reference to the canvas element
-        var ctx = document.getElementById('myChart').getContext('2d');
-
-        // Define your chart data and options
-        var data = {
-            labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Lable 5'],
-            datasets: [{
-                label: 'Sample Data',
-                data: [5, 15, 20, 28, 25], // Your data values here
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)'
-                ],
-                borderWidth: 1
-            }]
-        };
-
-        var options = {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
             }
-        };
-
-        // Create the chart
-        var myChart = new Chart(ctx, {
-            type: 'line', // Choose the type of chart (e.g., 'bar', 'line', etc.)
-            data: data,
-            options: options
-        });
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
     </script>
 
-    <script>
-        // Get a reference to the canvas element
-        var ctx = document.getElementById('myChart1').getContext('2d');
 
-        // Define your chart data and options
-        var data = {
-            labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Lable 5'],
-            datasets: [{
-                label: 'Sample Data',
-                data: [3, 20, 15, 10, 28], // Your data values here
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)'
-                ],
-                borderWidth: 1
-            }]
-        };
-
-        var options = {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        };
-
-        // Create the chart
-        var myChart1 = new Chart(ctx, {
-            type: 'pie', // Choose the type of chart (e.g., 'bar', 'line', etc.)
-            data: data,
-            options: options
-        });
-    </script>
-
-    <script>
-        // Get a reference to the canvas element
-        var ctx = document.getElementById('myChart2').getContext('2d');
-
-        // Define your chart data and options
-        var data = {
-            labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Lable 5'],
-            datasets: [{
-                label: 'Sample Data',
-                data: [5, 25, 10, 15, 30], // Your data values here
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)'
-                ],
-                borderWidth: 1
-            }]
-        };
-
-        var options = {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        };
-
-        // Create the chart
-        var myChart2 = new Chart(ctx, {
-            type: 'line', // Choose the type of chart (e.g., 'bar', 'line', etc.)
-            data: data,
-            options: options
-        });
-    </script>
-
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="~/js/material-dashboard.js"></script>
+    <script src="~/js/material-dashboard.min.js"></script>
+    <a href="~/js/material-dashboard.js.map">~/js/material-dashboard.js.map</a>
 </body>
-</html>
 
+</html>
