@@ -1,0 +1,424 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* CSS for navigation panel (left side) */
+        header {
+            background-color: gray;
+            color: wheat;
+            left: auto;
+            top: auto;
+            padding: 0px;
+            text-align: center;
+        }
+        #navPanel {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 100%;
+            background-color: ThreeDDarkShadow;
+            color: burlywood;
+            padding: 20px;
+        }
+        #navPanel1 {
+            position: absolute;
+            left: 275px;
+            top: 150px;
+            width: 275px;
+            height: 115px;
+            background-color: whitesmoke;
+            color: black;
+            padding: 10px;
+            border: groove;
+        }
+        #navPanel2 {
+            position: absolute;
+            left: 625px;
+            top: 150px;
+            width: 275px;
+            height: 115px;
+            background-color: whitesmoke;
+            color: black;
+            padding: 10px;
+            border: groove;
+        }
+        #navPanel3 {
+            position: absolute;
+            left: 975px;
+            top: 150px;
+            width: 275px;
+            height: 115px;
+            background-color: whitesmoke;
+            color: black;
+            padding: 10px;
+            border: groove;
+        }
+        /* CSS for current date and time (leftmost corner) */
+        #dateTime {
+            position: absolute;
+            left: 1225px;
+            top: 50px;
+            font-size: 18px;
+            color: black;
+            width: 116px;
+        }
+        /* CSS for graphs (centered) */
+        #graphContainer {
+            position: absolute;
+            top: 400px;
+            left: 400px;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            text-align: center;
+            height: 150px;
+        }
+        #graphContainer1 {
+            position: absolute;
+            top: 400px;
+            left: 750px;
+            transform: translate(-50%, -50%); /* Center both horizontally and vertically */
+            width: 300px;
+            text-align: center;
+            height: 150px;
+        }
+        #graphContainer2 {
+            position: absolute;
+            top: 400px;
+            left: 1100px;
+            transform: translate(-50%, -50%); /* Center both horizontally and vertically */
+            width: 300px;
+            text-align: center;
+            height: 150px;
+        }
+        .auto-style1 {
+            border-style: none;
+            border-color: aquamarine;
+            border-width: thick;
+            position: absolute;
+            top: 100px;
+            left: 325px;
+            display: round;
+            margin: 10px 20px;
+            padding: 0px;
+            background-color: #ff6a00;
+            color: #000000;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 119px;
+        }
+        .auto-style2 {
+            border-style: none;
+            border-color: inherit;
+            border-width: medium;
+            position: absolute;
+            top: 100px;
+            left: 650px;
+            display: round;
+            margin: 10px 20px;
+            padding: 0px;
+            background-color: #007bff;
+            color: #ffd800;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 125px;
+        }
+        .auto-style3 {
+            border-style: none;
+            border-color: inherit;
+            border-width: medium;
+            position: absolute;
+            top: 100px;
+            left: 975px;
+            display: round;
+            margin: 10px 20px;
+            padding: 0px;
+            background-color: #007bff;
+            color: #4cff00;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 125px;
+        }
+        .auto-style4 {
+            left: 298px;
+            top: 224px;
+            width: 570px;
+        }
+        .auto-style5 {
+            height: 125px;
+            margin-left: 243px;
+            width: 633px;
+        }
+        .auto-style6 {
+            left: 1200px;
+            top: 20px;
+            color: aqua;
+        }
+        #settingsLink {
+            color: #ccc;
+            pointer-events: none;
+            text-decoration: none;
+        }
+    </style>    
+</head>
+<body>
+    <div class="text-center">
+        <h1 class="display-4">POL</h1>
+        <!-- Other content of your page goes here -->
+    </div>
+    <form id="form1" runat="server">
+
+        <div id="navPanel">
+            <!-- Navigation panel content with icons -->
+            <h2>Navigation Panel</h2>
+            <ul>
+                <li><i class="fas fa-envelope"></i> <a href="/Index1">Receipt</a></li>
+                <li><i class="fas fa-book"></i> <a href="/Index2">Add New Item</a></li>
+                <li><i class="fas fa-cog"></i> <a href="/Index3">Add New Supplier</a></li>
+                <li><i class="fas fa-book-bookmark"></i> <a href="#">Inventory Report</a></li>
+                <li><i class="fas fa-cog"></i> <a id="settingsLink" href="#">User Settings</a></li>
+                <li><i class="fas fa-cog"></i> <a id="settingsLink" href="#">Admin Settings</a></li>
+            </ul>
+        </div>
+
+        <div id="dateTime">
+            <span id="clock"></span>
+        </div>
+
+        <div id="content">
+            <button id="button2" class="auto-style1" type="button">Button 1</button>
+            <button id="button3" class="auto-style2" type="button">Button 2</button>
+            <button id="button1" class="auto-style3" type="button">Button 3</button>
+        </div>
+
+        <div id="graphContainer" class="auto-style4">
+            <!-- Chart.js graph will be inserted here -->
+            <canvas id="myChart"></canvas>
+        </div>
+        <div id="graphContainer1" class="auto-style4">
+            <!-- Chart.js graph will be inserted here -->
+            <canvas id="myChart1"></canvas>
+        </div>
+
+        <div id="graphContainer2" class="auto-style4">
+            <!-- Chart.js graph will be inserted here -->
+            <canvas id="myChart2"></canvas>
+        </div>
+
+        <div id="navPanel1" class="auto-style4">
+            <!-- Add text, icons, and values using HTML and Razor controls -->
+            <h4>Inventory</h4>
+            <ul>
+                <li>
+                    <i class="fas fa-book-bookmark"></i>
+                    <a asp-page="Inventory">Inventory</a>
+                    <span class="value">10</span>
+                </li>
+                <li>
+                    <i class="fas fa-envelope"></i>
+                    <a asp-page="HRInventory">HR Inventory</a>
+                    <span class="value">25</span>
+                </li>
+                <!-- Add more list items as needed -->
+            </ul>
+        </div>
+
+        <div id="navPanel2" class="auto-style4">
+            <!-- Add text, icons, and values using HTML and Razor controls -->
+            <h4>Inventory</h4>
+            <ul>
+                <li>
+                    <i class="fas fa-book-bookmark"></i>
+                    <a asp-page="Inventory">Inventory</a>
+                    <span class="value">10</span>
+                </li>
+                <li>
+                    <i class="fas fa-envelope"></i>
+                    <a asp-page="HRInventory">HR Inventory</a>
+                    <span class="value">25</span>
+                </li>
+                <!-- Add more list items as needed -->
+            </ul>
+        </div>
+
+        <div id="navPanel3" class="auto-style4">
+            <!-- Add text, icons, and values using HTML and Razor controls -->
+            <h4>Inventory</h4>
+            <ul>
+                <li>
+                    <i class="fas fa-book-bookmark"></i>
+                    <a asp-page="Inventory">Inventory</a>
+                    <span class="value">10</span>
+                </li>
+                <li>
+                    <i class="fas fa-envelope"></i>
+                    <a asp-page="HRInventory">HR Inventory</a>
+                    <span class="value">25</span>
+                </li>
+                <!-- Add more list items as needed -->
+            </ul>
+        </div>
+    </form>
+
+    <script>
+        function updateClock() {
+            var now = new Date();
+            var clockElement = document.getElementById('clock');
+            clockElement.innerHTML = now.toLocaleString('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+        }
+
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+
+        // Initial update
+        updateClock();
+    </script>
+
+    <script>
+        // Get a reference to the canvas element
+        var ctx = document.getElementById('myChart').getContext('2d');
+
+        // Define your chart data and options
+        var data = {
+            labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Lable 5'],
+            datasets: [{
+                label: 'Sample Data',
+                data: [5, 15, 20, 28, 25], // Your data values here
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        var options = {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+
+        // Create the chart
+        var myChart = new Chart(ctx, {
+            type: 'line', // Choose the type of chart (e.g., 'bar', 'line', etc.)
+            data: data,
+            options: options
+        });
+    </script>
+
+    <script>
+        // Get a reference to the canvas element
+        var ctx = document.getElementById('myChart1').getContext('2d');
+
+        // Define your chart data and options
+        var data = {
+            labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Lable 5'],
+            datasets: [{
+                label: 'Sample Data',
+                data: [3, 20, 15, 10, 28], // Your data values here
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        var options = {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+
+        // Create the chart
+        var myChart1 = new Chart(ctx, {
+            type: 'pie', // Choose the type of chart (e.g., 'bar', 'line', etc.)
+            data: data,
+            options: options
+        });
+    </script>
+
+    <script>
+        // Get a reference to the canvas element
+        var ctx = document.getElementById('myChart2').getContext('2d');
+
+        // Define your chart data and options
+        var data = {
+            labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Lable 5'],
+            datasets: [{
+                label: 'Sample Data',
+                data: [5, 25, 10, 15, 30], // Your data values here
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        var options = {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+
+        // Create the chart
+        var myChart2 = new Chart(ctx, {
+            type: 'line', // Choose the type of chart (e.g., 'bar', 'line', etc.)
+            data: data,
+            options: options
+        });
+    </script>
+
+</body>
+</html>
+

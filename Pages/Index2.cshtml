@@ -1,0 +1,204 @@
+﻿@page
+@model POL1.Pages.Index2Model
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    #navPanel {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 200px;
+        height: 100%;
+        background-color: ThreeDDarkShadow;
+        color: burlywood;
+        padding: 20px;
+    }
+
+    #entry {
+        position: absolute;
+        left: 500px;
+        top: 150px;
+        width: 600px;
+        height: 375px;
+        background-color: blueviolet;
+        color: burlywood;
+        padding: 25px;
+    }
+
+    header {
+        background-color: gray;
+        color: wheat;
+        left: auto;
+        top: auto;
+        padding: 0px;
+        text-align: center;
+    }
+
+    #settingsLink {
+        color: #ccc;
+        pointer-events: none;
+        text-decoration: none;
+    }
+
+        #dateTime {
+            position: absolute;
+            left: 1225px;
+            top: 50px;
+            font-size: 18px;
+            color: black;
+            width: 116px;
+        }
+        h2 {
+            text-align:center;
+            margin-top: 0;
+        }
+    </style>
+    </head>
+<body>
+    <div class="text-center">
+        <h1 class="display-4">POL</h1>
+        <!-- Other content of your page goes here -->
+    </div>
+    <form id="form1" runat="server">
+
+        <div id="navPanel">
+            <!-- Navigation panel content with icons -->
+            <h2>Navigation Panel</h2>
+            <ul>
+                <li><i class="fas fa-envelope"></i> <a href="/Index1">Receipt</a></li>
+                <li><i class="fas fa-book"></i> <a href="/Index2">Add New Item</a></li>
+                <li><i class="fas fa-cog"></i> <a href="/Index3">Add New Supplier</a></li>
+                <li><i class="fas fa-book-bookmark"></i> <a href="#">Inventory Report</a></li>
+                <li><i class="fas fa-cog"></i> <a id="settingsLink" href="#">User Settings</a></li>
+                <li><i class="fas fa-cog"></i> <a id="settingsLink" href="#">Admin Settings</a></li>
+                <li><i calss=""></i><a href="/Index">Main Page</a></li>
+            </ul>
+        </div>
+            <div id="entry">
+                <h2>Add New Item</h2>
+                <form method="post">
+                    <table id="entryTable">
+                        <tr>
+                            <td>
+                                <label for="Date">Date:</label>
+                            </td>
+                            <td>
+                                <input type="date" id="Date" name="Date" asp-for="Date" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="ItemName">Item Name:</label>
+                            </td>
+                            <td>
+                                <input type="text" id="ItemName" name="ItemName" asp-for="ItemName" />
+                            </td>
+                            <td>
+                                <label for="Description">Description:</label>
+                            </td>
+                            <td>
+                                <input type="text" id="Description" name="Description" asp-for="Description" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="ItemCode">Item Code:</label>
+                            </td>
+                            <td>
+                                <input type="text" id="ItemCode" name="ItemCode" asp-for="ItemCode" />
+                            </td>
+                            <td>
+                                <label for="Category">Category:</label>
+                            </td>
+                            <td>
+                                <select id="Category" name="Category" asp-for="Cotegory" onchange="handleCategoryChange(this)">
+                                    <option value="">Select Item</option>
+                                    <option value="1">Item 1</option>
+                                    <option value="2">Item 2</option>
+                                    <option value="3">Add New</option>
+                                </select>
+                                <div id="newCategoryContainer" style="display: none;">
+                                    <input type="text" id="TextBox4" name="NewCategory" placeholder="Enter New Category" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="UOM">UOM:</label>
+                            </td>
+                            <td>
+                                <select id="UOM" name="UOM" asp-for="UOM" onchange="handleUOMChange(this)">
+                                    <option value="">Select Item</option>
+                                    <option value="1">Item 1</option>
+                                    <option value="2">Item 2</option>
+                                    <option value="3">Add New</option>
+                                </select>
+                                <div id="newUOMContainer" style="display: none;">
+                                    <input type="text" id="txtNewUOM" name="NewUOM" placeholder="Enter New UOM" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <button type="submit" id="btnSubmit">Submit</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
+
+        <div id="dateTime">
+            <span id="clock"></span>
+        </div>
+        </form>
+
+        <script type="text/javascript">
+            function handleUOMChange(dropdown) {
+                var selectedValue = dropdown.options[dropdown.selectedIndex].value;
+                var newUOMContainer = document.getElementById('newUOMContainer');
+
+                if (selectedValue === '3') {
+                    newUOMContainer.style.display = 'block';
+                } else {
+                    newUOMContainer.style.display = 'none';
+                }
+            }
+
+            function handleCategoryChange(dropdown) {
+                var selectedValue = dropdown.options[dropdown.selectedIndex].value;
+                var newCategoryContainer = document.getElementById('newCategoryContainer');
+
+                if (selectedValue === '3') {
+                    newCategoryContainer.style.display = 'block';
+                } else {
+                    newCategoryContainer.style.display = 'none';
+                }
+            }
+        </script>
+
+        <script type="text/javascript">
+            function updateClock() {
+                var now = new Date();
+                var clockElement = document.getElementById('clock');
+                clockElement.innerHTML = now.toLocaleString('en-US', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+            }
+
+            // Update the clock every second
+            setInterval(updateClock, 1000);
+
+            // Initial update
+            updateClock();
+        </script>
+</body>
+</html>

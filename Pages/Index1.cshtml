@@ -1,0 +1,642 @@
+﻿@page "/Index1"
+@model Index1Model
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #navPanel {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 100%;
+            background-color: ThreeDDarkShadow;
+            color: burlywood;
+            padding: 20px;
+        }
+        #entry {
+            position: absolute;
+            left: 300px;
+            top: 100px;
+            width: 950px;
+            height: 95px;
+            background-color: blueviolet;
+            color: burlywood;
+            padding: 30px;
+        }
+        #entry1 {
+            position: absolute;
+            left: 300px;
+            top: 400px;
+            width: 950px;
+            height: 200px;
+            background-color: blueviolet;
+            color: burlywood;
+            padding: 30px;
+        }
+        #entry2 {
+            position: absolute;
+            left: 300px;
+            top: 190px;
+            width: 950px;
+            height: 215px;
+            background-color: blueviolet;
+            color: burlywood;
+            padding: 30px;
+        }
+        #settingsLink {
+            color: #ccc;
+            pointer-events: none;
+            text-decoration: none;
+        }
+        #dateTime {
+            position: absolute;
+            left: 1225px;
+            top: 50px;
+            font-size: 18px;
+            color: black;
+            width: 116px;
+        }
+        header {
+            background-color: gray;
+            color: wheat;
+            left: auto;
+            top: auto;
+            padding: 0px;
+            text-align: center;
+        }
+        th {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-center">
+        <h1 class="display-4">POL</h1>
+        <!-- Other content of your page goes here -->
+    </div>
+    <form id="form1" runat="server">
+
+        <div id="navPanel">
+            <!-- Navigation panel content with icons -->
+            <h2>Navigation Panel</h2>
+            <ul>
+                <li><i class="fas fa-envelope"></i> <a href="/Index1">Receipt</a></li>
+                <li><i class="fas fa-book"></i> <a href="/Index2">Add New Item</a></li>
+                <li><i class="fas fa-cog"></i> <a href="/Index3">Add New Supplier</a></li>
+                <li><i class="fas fa-book-bookmark"></i> <a href="#">Inventory Report</a></li>
+                <li><i class="fas fa-cog"></i> <a id="settingsLink" href="#">User Settings</a></li>
+                <li><i class="fas fa-cog"></i> <a id="settingsLink" href="#">Admin Settings</a></li>
+                <li><i calss=""></i><a href="/Index">Main Page</a></li>
+            </ul>
+        </div>
+
+        <div id="dateTime">
+            <span id="clock"></span>
+        </div>
+        <form method="post">
+        <div id="entry">
+            <table id="main">
+                <tr>
+                    <td>
+                        <label for="Date">Date:</label>
+                    </td>
+                    <td>
+                        <input id="Date" type="date" asp-for="Date" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="Receipt">"Receipt #:"</label>
+                    </td>
+                    <td>
+                        <input id="Receipt" type="text" asp-for="ReceiptNumber" />
+                    </td>
+                    <td>
+                        <label for="ddlTransactionType">"Transaction Type:"</label>
+                    </td>
+                    <td>
+                        <select id="ddlTransactionType" asp-for="TransactionType" onchange="showTable(this.value)">
+                            <option value="">Select Type</option>
+                            <option value="OutgoingShipment">Outgoing Shipment</option>
+                            <option value="IncomingShipment">Incoming Shipment</option>
+                            <option value="InternalIssuance">Internal Issuance</option>
+                            <option value="InternalReceive">Internal Receive</option>
+                            <option value="UnclosedTransactions">Unclosed Transactions</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="entry2">
+            <table id="OutgoingShipment" class="inventory-table1">
+                <tr>
+                    <td>
+                        <label for="osTextBox1">Driver Name:</label>
+                    </td>
+                    <td>
+                        <input id="osTextBox1" type="text" asp-for="DriverName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="osTextBox2">Vehicle #:</label>
+                    </td>
+                    <td>
+                        <input id="osTextBox2" type="text" asp-for="VehicleNumber" />
+                    </td>
+                    <td>
+                        <label for="osTextBox3">Contact #:</label>
+                    </td>
+                    <td>
+                        <input id="osTextBox3" type="text" asp-for="ContactNumber" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="ddlDropDownList1">Purpose:</label>
+                    </td>
+                    <td>
+                        <select id="ddlDropDownList1" asp-for="Purpose">
+                            <option value="">Select Item</option>
+                            <option value="1">Store</option>
+                            <option value="2">Project</option>
+                            <option value="3">Transfer</option>
+                        </select>
+                    </td>
+                    <td>
+                        <label for="ddlDropDownList3">Source:</label>
+                    </td>
+                    <td>
+                        <select id="ddlDropDownList3" asp-for="Source">
+                            <option value="">Select Item</option>
+                            <option value="1">Vendor</option>
+                            <option value="2">POL</option>
+                            <option value="3">Other Site</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>
+                        <label for="osTextBox4">Remarks:</label>
+                    </td>
+                    <td colspan="3">
+                        <textarea id="osTextBox4" asp-for="Remarks" rows="3" cols="40"></textarea>
+                    </td>
+                </tr>
+            </table>
+
+            <table id="IncomingShipment" class="inventory-table1">
+                <tr>
+                    <td>
+                        <label for="isTextBox1">Driver Name:</label>
+                    </td>
+                    <td>
+                        <input id="isTextBox1" type="text" asp-for="DriverName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="isTextBox2">Vehicle #:</label>
+                    </td>
+                    <td>
+                        <input id="isTextBox2" type="text" asp-for="VehicleNumber" />
+                    </td>
+                    <td>
+                        <label for="isTextBox3">Contact #:</label>
+                    </td>
+                    <td>
+                        <input id="isTextBox3" type="text" asp-for="ContactNumber" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="ddlDropDownList4">Purpose:</label>
+                    </td>
+                    <td>
+                        <select id="ddlDropDownList4" asp-for="Purpose">
+                            <option value="">Select Item</option>
+                            <option value="1">Store</option>
+                            <option value="2">Project</option>
+                            <option value="3">Transfer</option>
+                        </select>
+                    </td>
+                    <td>
+                        <label for="ddlDropDownList6">Source:</label>
+                    </td>
+                    <td>
+                        <select id="ddlDropDownList6" asp-for="Source">
+                            <option value="">Select Item</option>
+                            <option value="1">Vendor</option>
+                            <option value="2">POL</option>
+                            <option value="3">Other Site</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>
+                        <label for="isTextBox4">Remarks:</label>
+                    </td>
+                    <td colspan="3">
+                        <textarea id="isTextBox4" rows="3" cols="40" asp-for="Remarks" ></textarea>
+                    </td>
+                </tr>
+            </table>
+        
+
+        <table id="InternalIssuance" class="inventory-table1">
+            <tr>
+                <td>
+                    <label for="iiTextBox1">Requested By:</label>
+                </td>
+                <td>
+                    <input id="iiTextBox1" type="text" asp-for="RequestedBy" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="iiTextBox2">Department:</label>
+                </td>
+                <td>
+                    <input id="iiTextBox2" type="text" asp-for="Department" />
+                </td>
+                <td>
+                    <label for="iiTextBox3">Reason:</label>
+                </td>
+                <td>
+                    <input id="iiTextBox3" type="text" asp-for="Reason" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="ddlDropDownList7">Purpose:</label>
+                </td>
+                <td>
+                    <select id="ddlDropDownList7" asp-for="Purpose">
+                        <option value="">Select Item</option>
+                        <option value="1">Store</option>
+                        <option value="2">Project</option>
+                        <option value="3">Transfer</option>
+                    </select>
+                </td>
+                <td>
+                    <label for="ddlDropDownList8">Source:</label>
+                </td>
+                <td>
+                    <select id="ddlDropDownList8" asp-for="Source">
+                        <option value="">Select Item</option>
+                        <option value="1">Vendor</option>
+                        <option value="2">POL</option>
+                        <option value="3">Other Site</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="iiTextBox4">Remarks:</label>
+                </td>
+                <td colspan="3">
+                    <textarea id="iiTextBox4" rows="3" cols="40" asp-for="Remarks"></textarea>
+                </td>
+            </tr>
+        </table>
+
+            <table id="InternalReceive" class="inventory-table1">
+                <tr>
+                    <td>
+                        <label for="irTextBox1">Requested By:</label>
+                    </td>
+                    <td>
+                        <input id="irTextBox1" type="text" asp-for="RequestedBy" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="irTextBox2">Department:</label>
+                    </td>
+                    <td>
+                        <input id="irTextBox2" type="text" asp-for="Department" />
+                    </td>
+                    <td>
+                        <label for="irTextBox3">Reason:</label>
+                    </td>
+                    <td>
+                        <input id="irTextBox3" type="text" asp-for="Reason" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="irDropDownList7">Purpose:</label>
+                    </td>
+                    <td>
+                        <select id="irDropDownList7" asp-for="Purpose" >
+                            <option value="">Select Item</option>
+                            <option value="1">Store</option>
+                            <option value="2">Project</option>
+                            <option value="3">Transfer</option>
+                        </select>
+                    </td>
+                    <td>
+                        <label for="irDropDownList8">Source:</label>
+                    </td>
+                    <td>
+                        <select id="irDropDownList8" asp-for="Source">
+                            <option value="">Select Item</option>
+                            <option value="1">Vendor</option>
+                            <option value="2">POL</option>
+                            <option value="3">Other Site</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="irTextBox4">Remarks:</label>
+                    </td>
+                    <td colspan="3">
+                        <textarea id="irTextBox4" rows="3" cols="40" asp-for="Remarks" ></textarea>
+                    </td>
+                </tr>
+            </table>
+
+
+        <!-- Returnable Items Table -->
+                <table id="UnclosedTransactions" class="Inventory-Table1">
+                    <!-- Receipt Number Input -->
+                    <tr>
+                        <td>
+                            <label for="receiptNumber">Enter Receipt Number:</label>
+                        </td>
+                        <td>
+                            <input type="text" id="receiptNumber" />
+                        </td>
+                        <td>
+                            <button id="loadItemsButton">Load Returnable Items</button>
+                        </td>
+                    </tr>
+
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Item Code</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>UOM</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ReturnableItems)
+                        {
+                            <tr>
+                                <td>@item.ItemName</td>
+                                <td>@item.ItemCode</td>
+                                <td>@item.Description</td>
+                                <td>@item.Category</td>
+                                <td>@item.UOM</td>
+                                <td>@item.Quantity</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+        </div>
+        </form>
+
+        <div id="entry1">
+            <table class="inventory-table" >
+                <tr>
+                    <th>Item Name</th> 
+                    <th>Item Code</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>UOM</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>
+                        <select id="DropDownList2" name="Item">
+                            <option value="">Select Item</option>
+                            <option value="1">Item 1</option>
+                            <option value="2">Item 2</option>
+                            <option value="3">Item 3</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="ddlItemCode1" name="ItemCode">
+                            <option value="">Select Item Code</option>
+                            <option value="1">Code 1</option>
+                            <option value="2">Code 2</option>
+                            <option value="3">Code 3</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="ddlDescription1" name="Description">
+                            <option value="">Select Description</option>
+                            <option value="1">Description 1</option>
+                            <option value="2">Description 2</option>
+                            <option value="3">Description 3</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="ddlCategory1" name="Category">
+                            <option value="">Select Category</option>
+                            <option value="1">Category 1</option>
+                            <option value="2">Category 2</option>
+                            <option value="3">Category 3</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="ddlUOM1" name="UOM">
+                            <option value="">Select UOM</option>
+                            <option value="1">UOM 1</option>
+                            <option value="2">UOM 2</option>
+                            <option value="3">UOM 3</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" id="txtQuantity1" name="Quantity" onkeypress="return isNumeric(evt);" size="3" />
+                    </td>
+                    <td>
+                        <select id="ddlStatus1" name="Status">
+                            <option value="Returnable">Returnable</option>
+                            <option value="NonReturnable">Non Returnable</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <button type="button" id="btnAdd" onclick="return addRow();">Add New Row</button>
+            <button type="submit" id="btnSubmit1">Submit</button>
+        </div>
+
+    </form>
+
+    <script type="text/javascript">
+        window.addEventListener('DOMContentLoaded', (evt) => {
+            // Hide all tables by default
+            document.getElementById('OutgoingShipment').style.display = 'none';
+            document.getElementById('IncomingShipment').style.display = 'none';
+            document.getElementById('InternalIssuance').style.display = 'none';
+            document.getElementById('InternalReceive').style.display = 'none';
+            document.getElementById('UnclosedTransactions').style.display = 'none';
+
+            var dropdown = document.getElementById('ddlTransactionType');
+            if (dropdown) {
+                dropdown.addEventListener('change', function () {
+                    var selectedValue = dropdown.value;
+                    showTable(selectedValue);
+                });
+            } else {
+                console.error("Dropdown element not found.");
+            }
+        });
+
+        function showTable(selectedValue) {
+            // Hide all tables by default
+            document.getElementById('OutgoingShipment').style.display = 'none';
+            document.getElementById('IncomingShipment').style.display = 'none';
+            document.getElementById('InternalIssuance').style.display = 'none';
+            document.getElementById('InternalReceive').style.display = 'none';
+            document.getElementById('UnclosedTransactions').style.display = 'none';
+            // Show the table based on the selected option
+            if (selectedValue === 'OutgoingShipment') {
+                document.getElementById('OutgoingShipment').style.display = 'block';
+            } else if (selectedValue === 'IncomingShipment') {
+                document.getElementById('IncomingShipment').style.display = 'block';
+            } else if (selectedValue === 'InternalIssuance') {
+                document.getElementById('InternalIssuance').style.display = 'block';
+            } else if (selectedValue === 'InternalReceive') {
+                document.getElementById('InternalReceive').style.display = 'block';
+            } else if (selectedValue === 'UnclosedTransactions') {
+                document.getElementById('UnclosedTransactions').style.display = 'block';
+            }
+            else {
+                return false;
+            }
+        }
+
+            function isNumeric(evt) {
+                var charCode = (evt.which) ? evt.which : evt.keyCode;
+
+                // Allow numeric digits (0-9), backspace, arrow keys, and the period ('.') character
+                if ((charCode >= 48 && charCode <= 57) || charCode === 8 || charCode === 37 || charCode === 39 || charCode === 46) {
+                    return true;
+                }
+            }
+
+        function addRow() {
+            var table = document.querySelector('.inventory-table'); // Select the table by class
+            var newRow = table.insertRow(table.rows.length); // Add a new row at the end
+
+            // Create cells for the new row
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            var cell4 = newRow.insertCell(3);
+            var cell5 = newRow.insertCell(4);
+            var cell6 = newRow.insertCell(5);
+            var cell7 = newRow.insertCell(6);
+
+            // Create select elements for the cells
+            var dropdown1 = document.createElement('select');
+            var dropdown2 = document.createElement('select');
+            var dropdown3 = document.createElement('select');
+            var dropdown4 = document.createElement('select');
+            var dropdown5 = document.createElement('select');
+            var textbox = document.createElement('input');
+            var statusDropdown = document.createElement('select');
+
+            // Set the options for the select elements (you can customize these)
+            dropdown1.innerHTML = '<option value="">Select Item</option><option value="1">Item 1</option><option value="2">Item 2</option><option value="3">Item 3</option>';
+            dropdown2.innerHTML = '<option value="">Select Item Code</option><option value="1">Code 1</option><option value="2">Code 2</option><option value="3">Code 3</option>';
+            dropdown3.innerHTML = '<option value="">Select Description</option><option value="1">Description 1</option><option value="2">Description 2</option><option value="3">Description 3</option>';
+            dropdown4.innerHTML = '<option value="">Select Category</option><option value="1">Category 1</option><option value="2">Category 2</option><option value="3">Category 3</option>';
+            dropdown5.innerHTML = '<option value="">Select UOM</option><option value="1">UOM 1</option><option value="2">UOM 2</option><option value="3">UOM 3</option>';
+
+            // Set attributes for the input field
+            textbox.type = 'text';
+            textbox.name = 'Quantity';
+            textbox.onkeypress = function (event) {
+                return isNumeric(event);
+            };
+            textbox.style.width = '65px';
+
+            statusDropdown.innerHTML = '<option value="Returnable">Returnable</option><option value="NonReturnable">Non Returnable</option>';
+
+            // Append the select elements and input field to the cells
+            cell1.appendChild(dropdown1);
+            cell2.appendChild(dropdown2);
+            cell3.appendChild(dropdown3);
+            cell4.appendChild(dropdown4);
+            cell5.appendChild(dropdown5);
+            cell6.appendChild(textbox);
+            cell7.appendChild(statusDropdown);
+
+            return false;
+        }
+
+        
+            function updateClock() {
+                var now = new Date();
+                var clockElement = document.getElementById('clock');
+                clockElement.innerHTML = now.toLocaleString('en-US', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+            }
+
+            // Update the clock every second
+            setInterval(updateClock, 1000);
+
+            // Initial update
+            updateClock();
+        
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @* <script>
+        function loadReturnableItems() {
+            var receiptNumber = $('#receiptNumber').val();
+
+            $.ajax({
+                url: '@Url.Action("GetReturnableItems", "YourControllerName")', // Replace with your controller and action names
+                type: 'GET',
+                data: { receiptNumber: receiptNumber },
+                success: function (data) {
+                    var tableBody = $('#returnableItemsTable tbody');
+                    tableBody.empty(); // Clear existing rows
+
+                    $.each(data, function (index, item) {
+                        var newRow = '<tr>' +
+                            '<td>' + item.ItemName + '</td>' +
+                            '<td>' + item.ItemCode + '</td>' +
+                            '<td>' + item.Description + '</td>' +
+                            '<td>' + item.Category + '</td>' +
+                            '<td>' + item.UOM + '</td>' +
+                            '<td>' + item.Quantity + '</td>' +
+                            '</tr>';
+
+                        tableBody.append(newRow);
+                    });
+                },
+                error: function () {
+                    alert('Error fetching returnable items.');
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $('#loadItemsButton').click(function () {
+                loadReturnableItems();
+            });
+        });
+    </script> *@
+</body>
+</html>
