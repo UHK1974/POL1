@@ -1,0 +1,163 @@
+﻿@page
+@model POL1.Pages.Index3Model
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    #navPanel {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 200px;
+        height: 100%;
+        background-color: ThreeDDarkShadow;
+        color: burlywood;
+        padding: 20px;
+    }
+
+    #entry {
+        position: absolute;
+        left: 500px;
+        top: 150px;
+        width: 600px;
+        height: 375px;
+        background-color: blueviolet;
+        color: burlywood;
+        padding: 25px;
+    }
+
+    header {
+        background-color: gray;
+        color: wheat;
+        left: auto;
+        top: auto;
+        padding: 0px;
+        text-align: center;
+    }
+
+    #settingsLink {
+        color: #ccc;
+        pointer-events: none;
+        text-decoration: none;
+    }
+
+        #dateTime {
+            position: absolute;
+            left: 1225px;
+            top: 50px;
+            font-size: 18px;
+            color: black;
+            width: 116px;
+        }
+        h2 {
+            text-align:center;
+            margin-top: 0;
+        }
+    </style>
+    </head>
+<body>
+    <div class="text-center">
+        <h1 class="display-4">POL</h1>
+        <!-- Other content of your page goes here -->
+    </div>
+    <form id="form1" runat="server">
+
+        <div id="navPanel">
+            <!-- Navigation panel content with icons -->
+            <h2>Navigation Panel</h2>
+            <ul>
+                <li><i class="fas fa-envelope"></i> <a href="/Index1">Receipt</a></li>
+                <li><i class="fas fa-book"></i> <a href="/Index2">Add New Item</a></li>
+                <li><i class="fas fa-cog"></i> <a href="/Index3">Add New Supplier</a></li>
+                <li><i class="fas fa-book-bookmark"></i> <a href="#">Inventory Report</a></li>
+                <li><i class="fas fa-cog"></i> <a id="settingsLink" href="#">User Settings</a></li>
+                <li><i class="fas fa-cog"></i> <a id="settingsLink" href="#">Admin Settings</a></li>
+                <li><i calss=""></i><a href="/Index">Main Page</a></li>
+            </ul>
+        </div>
+        <div id="entry">
+            <h2>Add New Supplier</h2>
+            <table id="entryTable">
+                <tr>
+                    <td>
+                        <label for="txtDate">Date:</label>
+                    </td>
+                    <td>
+                        <input type="date" id="txtDate" name="txtDate" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label for="TextBox2">Supplier Name:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="TextBox2" name="TextBox2" />
+                    </td>
+                    <td>
+                        <label for="TextBox1">Supplier Code:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="TextBox1" name="TextBox1" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label for="TextBox3">Contact Person:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="TextBox3" name="TextBox3" />
+                    </td>
+                    <td>
+                        <label for="TextBox4">Contact Number:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="TextBox4" name="TextBox4" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label for="TextBox5">Address:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="TextBox5" name="TextBox5" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="4">
+                        <button id="btnSubmit" type="submit">Submit</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="dateTime">
+            <span id="clock"></span>
+        </div>
+        </form>
+    <script type="text/javascript">
+        function updateClock() {
+            var now = new Date();
+            var clockElement = document.getElementById('clock');
+            clockElement.innerHTML = now.toLocaleString('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+        }
+
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+
+        // Initial update
+        updateClock();
+    </script>
+</body>
+</html>
