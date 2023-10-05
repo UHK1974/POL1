@@ -1,5 +1,5 @@
-﻿@page
-@model Pages.Index3Model
+﻿@page 
+@model Pages.Index8Model
 @{
 }
 <!DOCTYPE html>
@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <title>
-        Add New Suplier
+        Contractor Staff Registration
     </title>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -113,6 +113,7 @@
         /* Textbox Styles */
         input[type="text"],
         input[type="date"],
+        input[type="datetime"]
         select,
         textarea {
             width: 100%;
@@ -203,7 +204,7 @@
                         </div>
                         <span class="nav-link-text ms-1">Time Sheet</span>
                     </a>
-                </li>
+                </li> 
                 <li class="nav-item">
                     <a class="nav-link text-white " href="/Index4">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -213,7 +214,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/Index8">
+                    <a class="nav-link text-white active  bg-gradient-primary" href="/Index8">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
                         </div>
@@ -237,7 +238,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white active  bg-gradient-primary " href="/Index3">
+                    <a class="nav-link text-white " href="/Index3">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">notifications</i>
                         </div>
@@ -291,9 +292,9 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                         <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Add New Supplier</li>
+                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Contractor Staff Registration</li>
                     </ol>
-                    <h6 class="font-weight-bolder mb-0">Add New Supplier</h6>
+                    <h6 class="font-weight-bolder mb-0">Contractor Staff Registration</h6>
                 </nav>
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -303,7 +304,7 @@
                         </div>
                     </div>
                     <ul class="navbar-nav  justify-content-end">
-                      
+
                         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                                 <div class="sidenav-toggler-inner">
@@ -331,75 +332,118 @@
         </nav>
         <!-- End Navbar --><!-- End Navbar --><!-- End Navbar --><!-- End Navbar --><!-- End Navbar -->
         <div class="container-fluid ">
-
-           
-
-
-                <div id="entry">
-                     
-                    <h2>Add New Supplier</h2>
+            <div id="entry">
+              <h2>Contractor Staff Registration</h2>
                 <form id="form1" runat="server" method="post">
-                        <table id="entryTable">
-                        @* <tr>
+                    <table id="entryTable">
+                        <tr>
                             <td>
                                 <label for="txtDate">Date:</label>
                             </td>
                             <td>
-                                <input type="date" id="txtDate" name="txtDate" asp-for="Date" />
+                                <input type="date" id="txtDate" asp-for="Date" />
                             </td>
-                        </tr> *@
-
+                        </tr>
                         <tr>
                             <td>
-                                <label for="textbox1">Supplier Name:</label>
+                                <label for="textbox1">Employee ID:</label>
                             </td>
                             <td>
-                                <input type="text" id="textbox1" asp-for="SupplierName" />
+                                <input type="text" id="textbox1" asp-for="EmployeeID" />
                             </td>
                             <td>
-                                <label for="textbox2">Supplier Code:</label>
+                                <label for="textbox2">Employee Name:</label>
                             </td>
                             <td>
-                                <input type="text" id="textbox2" asp-for="SupplierCode" />
+                                <input type="text" id="textbox2" asp-for="EmployeeName" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="textbox3">Father Name:</label>
+                            </td>
+                            <td>
+                                <input type="text" id="textbox3" asp-for="FatherName" />
+                            </td>
+                            <td>
+                                <label for="textbox4">CNIC Number:</label>
+                            </td>
+                            <td>
+                                <input type="text" id="textbox4" asp-for="CNICNumber" />
                             </td>
                         </tr>
 
                         <tr>
                             <td>
-                                <label for="textbox3">Contact Person:</label>
+                                <label for="textbox5">Joining Date:</label>
                             </td>
                             <td>
-                                <input type="text" id="textbox3" asp-for="ContactPerson" />
+                                <input type="date" id="textbox5" asp-for="JoiningDate" />
                             </td>
                             <td>
-                                <label for="textbox4">Contact Number:</label>
+                                <label for="textbox6">Date Of Leaving:</label>
                             </td>
                             <td>
-                                <input type="text" id="textbox4" asp-for="ContactNumber" />
+                                <input type="date" id="textbox6" asp-for="DateOfLeaving" />
                             </td>
                         </tr>
 
                         <tr>
                             <td>
-                                <label for="textbox5">Address:</label>
+                                <label for="textbox7">EOBI Number:</label>
                             </td>
                             <td>
-                                <input type="text" id="textbox5" asp-for="Address" />
+                                <input type="text" id="textbox7" asp-for="EOBINumber" />
+                            </td>
+                            <td>
+                                <label for="textbox8">Department:</label>
+                            </td>
+                            <td>
+                                <input type="text" id="textbox8" asp-for="Department" />
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <label for="textbox9">Social Security Number:</label>
+                            </td>
+                            <td>
+                                <input type="text" id="textbox9" asp-for="SocialSecurityNumber" />
+                            </td>
+                            
+                            <td>
+                                <label for="irTextBox10">Address:</label>
+                            </td>
+                            <td> 
+                                <input type="text" id="textbox10" asp-for="Address"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="textbox11">Salary:</label>
+                            </td>
+                            <td>
+                                <input type="text" id="textbox11" asp-for="Salary" />
+                            </td>
 
+                            <td>
+                                <label for="irTextBox12">Contrator Name:</label>
+                            </td>
+                            <td>
+                                <input type="text" id="textbox12" asp-for="ContractorName"/>
+                            </td>
+                        </tr>
                         <tr>
                             <td colspan="4">
                                 <button id="btnSubmit" type="submit">Submit</button>
                             </td>
                         </tr>
-                      </table>
-                    </form>
-                </div>
-                <div id="dateTime">
-                    <span id="clock"></span>
-                </div>
-           
+                    </table>
+                </form>
+            </div>
+            @* <div id="dateTime">
+                <span id="clock"></span>
+            </div> *@
+
         </div>
 
 

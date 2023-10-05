@@ -5,68 +5,64 @@ using System.Data;
 
 namespace POL1.Pages
 {
-    public class Index2Model : PageModel
+    public class Index4Model : PageModel
     {
 
-        // Model properties
-        //[BindProperty]
-        //public string Date { get; set; }
+        [BindProperty]
+        public string Date { get; set; } = "";
 
         [BindProperty]
-        public string ItemName { get; set; } = "";
+        public string ProjectID { get; set; } = "";
 
         [BindProperty]
-        public string Description { get; set; } = "";
-        [BindProperty]
-        public string ItemCode { get; set; } = "";
+        public string ProjectName { get; set; } = "";
 
         [BindProperty]
-        public string Category { get; set; } = "";
+        public string StartDate { get; set; } = "";
 
         [BindProperty]
-        public string UOM { get; set; } = "";
+        public string EndDate { get; set; } = "";
+
         [BindProperty]
-        public string Packing { get; set; } = "";
+        public string ServiceCompany { get; set; } = "";
+
+        [BindProperty]
+        public string TeamLeadName { get; set; } = "";
+
+        [BindProperty]
+        public string TotalTeamMember { get; set; } = "";
+
+        [BindProperty]
+        public string Status { get; set; } = "";
+
+        [BindProperty]
+        public string ProjectScope { get; set; } = "";
 
         public void OnGet()
         {
-
         }
-
         public IActionResult OnPost()
         {
-            //DateTime myDate = DateTime.Now;
-
-
-            string tableName = "AddItem"; // Change this based on your needs
+            string tableName = "Project"; 
             Dictionary<string, object> data = new Dictionary<string, object>
 
             {
-                //{ "Date", myDate },
-                { "ItemName", ItemName },
-                { "ItemCode", ItemCode },
-                { "Description", Description },
-                { "Category", Category },
-                { "UOM", UOM },
-                { "Packing", Packing },
-             };
+                { "Date", Date },
+                { "ProjectID", ProjectID },
+                { "ProjectName", ProjectName },
+                { "StartDate", StartDate },
+                { "EndDate", EndDate },
+                { "ServiceCompany", ServiceCompany },
+                { "TeamLeadName", TeamLeadName },
+                { "TotalTeamMember", TotalTeamMember },
+                { "Status", Status },
+                { "ProjectScope", ProjectScope },
+
+            };
 
             InsertData(tableName, data);
 
-            Dictionary<string, object> data2 = new Dictionary<string, object>
-
-            {
-                //{ "Date", myDate },
-                { "ItemName", ItemName },
-                { "ItemCode", ItemCode },
-                { "Description", Description },
-                { "Category", Category },
-                { "UOM", UOM },
-                { "StockInHand", "0" },
-                { "Status","Non-Returnable"},
-             };
-            InsertData("MainInventory", data2);
-            return RedirectToPage("/Index2");
+            return RedirectToPage("/Index4");
         }
 
         private static void InsertData(string tableName, Dictionary<string, object> data)
@@ -94,8 +90,8 @@ namespace POL1.Pages
                     }
                     else
                     {
-                    command.Parameters.Add($"@{entry.Key}", GetSqlDbType(entry.Value)).Value = entry.Value;
-                     }
+                        command.Parameters.Add($"@{entry.Key}", GetSqlDbType(entry.Value)).Value = entry.Value;
+                    }
                 }
 
                 command.ExecuteNonQuery();

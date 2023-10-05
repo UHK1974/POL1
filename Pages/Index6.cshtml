@@ -1,16 +1,17 @@
-﻿@page
-@model Pages.Index3Model
+﻿@page "/Index6"
+@model Index6Model
 @{
 }
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <title>
-        Add New Suplier
+        Time Sheet
     </title>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -112,6 +113,7 @@
         /* Improved Styles for Textboxes and Labels */
         /* Textbox Styles */
         input[type="text"],
+        input[type="number"],
         input[type="date"],
         select,
         textarea {
@@ -155,10 +157,16 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
+        #btnSubmit1 {
+            width: 200px; /* Adjust the width to your preference */
+            display: block;
+            margin: 0 auto;
+        }
     </style>
 </head>
+
 <body class="g-sidenav-show  bg-gray-200">
-    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
+   @*  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard " target="_blank">
@@ -168,7 +176,6 @@
         </div>
         <hr class="horizontal light mt-0 mb-2">
         <!-- SideBar --><!-- SideBar --><!-- SideBar --><!-- SideBar --><!-- SideBar --><!-- SideBar --><!-- SideBar -->
-
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -185,7 +192,7 @@
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
                         </div>
-                        <span class="nav-link-text ms-1">Receipt</span>
+                        <span class="nav-link-text ms-1">Time Sheet</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -197,7 +204,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/Index6" target="_blank">
+                    <a class="nav-link text-white active  bg-gradient-primary" href="/Index6">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
                         </div>
@@ -213,23 +220,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/Index8">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
-                        </div>
-                        <span class="nav-link-text ms-1">Contractor Staff Registration</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="/Index9" target="_blank">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
-                        </div>
-                        <span class="nav-link-text ms-1">Contractor Staff Attendance</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white  " href="/index2">
+                    <a class="nav-link text-white " href="/Index2">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
                         </div>
@@ -237,7 +228,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white active  bg-gradient-primary " href="/Index3">
+                    <a class="nav-link text-white " href="/Index3">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">notifications</i>
                         </div>
@@ -276,14 +267,13 @@
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">assignment</i>
                         </div>
-                        <span class="nav-link-text ms-1">Admin Setting</span>
+                        <span class="nav-link-text ms-1">Admon Setting</span>
                     </a>
                 </li>
             </ul>
         </div>
-
         <!--End Side bar--><!--End Side bar--><!--End Side bar--><!--End Side bar--><!--End Side bar-->
-    </aside>
+    </aside> *@
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar --><!-- Navbar --><!-- Navbar --><!-- Navbar --><!-- Navbar --><!-- Navbar --><!-- Navbar --><!-- Navbar --><!-- Navbar --><!-- Navbar -->
         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
@@ -291,9 +281,9 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                         <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Add New Supplier</li>
+                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Time Sheet</li>
                     </ol>
-                    <h6 class="font-weight-bolder mb-0">Add New Supplier</h6>
+                    <h6 class="font-weight-bolder mb-0">Time Sheet</h6>
                 </nav>
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -303,7 +293,12 @@
                         </div>
                     </div>
                     <ul class="navbar-nav  justify-content-end">
-                      
+                        @*  <li class="nav-item d-flex align-items-center">
+                        <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank" href="https://www.creative-tim.com/builder?ref=navbar-material-dashboard">Online Builder</a>
+                        </li>
+                        <li class="mt-2">
+                        <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star creativetimofficial/material-dashboard on GitHub">Star</a>
+                        </li>*@
                         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                                 <div class="sidenav-toggler-inner">
@@ -332,74 +327,104 @@
         <!-- End Navbar --><!-- End Navbar --><!-- End Navbar --><!-- End Navbar --><!-- End Navbar -->
         <div class="container-fluid ">
 
-           
+            <form id="form1" runat="server" method="post">
+                <div id="entry-container">
+                    <div id="entry1" class="entry">
+                        <table class="inventory-table">
+                            <!-- Table header row -->
+                            <tr>
+                                <th style="text-align: center;">Date</th>
+                                <th style="text-align: center;">Company</th>
+                                <th style="text-align: center;">Job ID</th>
+                                <th style="text-align: center;">Name</th>
+                                <th style="text-align: center;">Designation</th>
+                                <th style="text-align: center;">Time In</th>
+                                <th style="text-align: center;">Time Out</th>
+                                <th style="text-align: center;">Working Hours</th>
+                                @*<th style="text-align: center;">Status</th>
+                                <th style="text-align: center;">Action</th> *@
+                            </tr>
+                            <!-- Existing row -->
+                            <tr>
+                                <td style="padding: 10px; width:12%;">
+                                    <input type="date" id="date1" asp-for="Date">
+                                    @* <datalist id="itemNames">
+                                        <option value="Code 1"></option>
+                                        <option value="Code 2"></option>
+                                        <option value="Code 3"></option>
+                                    </datalist> *@
+                                </td>
+                                <td style="padding: 10px; width:12%;">
+                                    <input type="text" id="txtCompany" asp-for="Company">
+                                    @* <datalist id="itemCodes">
+                                        <option value="Code 1"></option>
+                                        <option value="Code 2"></option>
+                                        <option value="Code 3"></option>
+                                    </datalist> *@
+                                </td>
+                                <td style="padding: 10px; width:12%;">
+                                    <input type"text" id="txtjobid" asp-for="JobID">
+                                    @* <datalist id="descriptions">
+                                        <option value="Description 1"></option>
+                                        <option value="Description 2"></option>
+                                        <option value="Description 3"></option>
+                                    </datalist> *@
+                                </td>
 
-
+                                <td style="padding: 10px; width:12%;">
+                                    <input type="text" id="txtname" asp-for="Name">
+                                    @* <datalist id="uoms">
+                                        <option value="UOM 1"></option>
+                                        <option value="UOM 2"></option>
+                                        <option value="UOM 3"></option>
+                                    </datalist> *@
+                                </td>
+                                <td style="padding: 10px; width:12%;">
+                                    <input type="text" id="txtdesignation" asp-for="Designation">
+                                </td>
+                                <td style="padding: 10px; width:12%;">
+                                    <input type="time" id="txttimein" oninput="calculateWorkingHours(1)" asp-for="TimeIn">
+                                </td>
+                                <td style="padding: 10px; width:12%;">
+                                    <input type="time" id="txttimeout" oninput="calculateWorkingHours(1)" asp-for="TimeOut">
+                                </td>
+                                <td style="padding: 10px; width:12%;">
+                                    <input type="text" id="txtworkinghours" readonly asp-for="WorkingHours">
+                                </td>
+  
+                                    
+                                    
+                                    @* <td style="padding: 10px; width:8%;">
+                                    <input type="number" id="txtQuantity1" oninput="calculateTotal(1)" onkeypress="return isNumeric(evt);" size="3" asp-for="Quantity">
+                                </td>
+                                <td style="padding: 10px; width:8%;">
+                                    <input type="number" id="txtUnitPrice1" oninput="calculateTotal(1)" onkeypress="return isNumeric(evt);" size="5" asp-for="UnitPrice">
+                                </td>
+                                <td style="padding: 10px;">
+                                    <input type="text" id="txtTotalAmount1" onkeypress="return isNumeric(evt);" size="3" readonly asp-for="TotalAmount">
+                                </td>
+                                <td style="padding: 10px; ">
+                                    <input type="text" id="txtQuantity4" onkeypress="return isNumeric(evt);" size="3" asp-for="Currency">
+                                </td> *@
+                                @* <td style="padding: 10px;">
+                                    <select id="Status1" type="ddlStatus1" asp-for="Status">
+                                        <option value="NonReturnable">Non Returnable</option>
+                                        <option value="Returnable">Returnable</option>
+                                    </select>
+                                </td> *@
+                                <td style="padding: 10px;">
+                                    <button type="button" id="btnDelete" disable>Delete</button>
+                                </td>
+                            </tr>
+                        </table>
+                        <button type="button" id="btnAdd" onclick="addRow();">Add New Row</button>
+                    </div>
+                </div>
                 <div id="entry">
-                     
-                    <h2>Add New Supplier</h2>
-                <form id="form1" runat="server" method="post">
-                        <table id="entryTable">
-                        @* <tr>
-                            <td>
-                                <label for="txtDate">Date:</label>
-                            </td>
-                            <td>
-                                <input type="date" id="txtDate" name="txtDate" asp-for="Date" />
-                            </td>
-                        </tr> *@
-
-                        <tr>
-                            <td>
-                                <label for="textbox1">Supplier Name:</label>
-                            </td>
-                            <td>
-                                <input type="text" id="textbox1" asp-for="SupplierName" />
-                            </td>
-                            <td>
-                                <label for="textbox2">Supplier Code:</label>
-                            </td>
-                            <td>
-                                <input type="text" id="textbox2" asp-for="SupplierCode" />
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label for="textbox3">Contact Person:</label>
-                            </td>
-                            <td>
-                                <input type="text" id="textbox3" asp-for="ContactPerson" />
-                            </td>
-                            <td>
-                                <label for="textbox4">Contact Number:</label>
-                            </td>
-                            <td>
-                                <input type="text" id="textbox4" asp-for="ContactNumber" />
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label for="textbox5">Address:</label>
-                            </td>
-                            <td>
-                                <input type="text" id="textbox5" asp-for="Address" />
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td colspan="4">
-                                <button id="btnSubmit" type="submit">Submit</button>
-                            </td>
-                        </tr>
-                      </table>
-                    </form>
+                    <button type="submit" id="btnSubmit1" onclick="submitData();">Submit</button>
                 </div>
-                <div id="dateTime">
-                    <span id="clock"></span>
-                </div>
-           
+            </form>
+
         </div>
 
 
@@ -474,6 +499,7 @@
     <script src="~/js/plugins/chartjs.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -483,7 +509,196 @@
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
     </script>
+    <script>
+        var rowCount = 1;
 
+        function calculateTotal() {
+            // Get all rows in the table
+            var rows = document.querySelectorAll('.inventory-table tr');
+
+            // Loop through all rows (skip the first row which contains headers)
+            for (var i = 1; i < rows.length; i++) {
+                // Get the values entered in the Quantity and UnitPrice fields for the specific row
+                var quantity = parseFloat(document.getElementById('txtQuantity' + i).value) || 0;
+                var unitPrice = parseFloat(document.getElementById('txtUnitPrice' + i).value) || 0;
+
+                // Calculate the TotalAmount for the specific row
+                var totalAmount = quantity * unitPrice;
+
+                // Display the calculated TotalAmount in the TotalAmount field for the specific row
+                document.getElementById('txtTotalAmount' + i).value = totalAmount;
+            }
+        }
+        function addRow() {
+            rowCount++;
+            var table = document.querySelector('.inventory-table');
+            var clone = table.rows[1].cloneNode(true);
+
+            // Clear the input values for the new row
+            clone.querySelectorAll('input').forEach(function (element) {
+                element.value = ''; // Clear the input values
+            });
+
+            // Update input element IDs and names to be unique
+            clone.querySelectorAll('input, select').forEach(function (element) {
+                var id = element.getAttribute('id');
+                var name = element.getAttribute('name');
+                if (id) {
+                    element.setAttribute('id', id.replace('1', rowCount));
+                }
+                if (name) {
+                    element.setAttribute('name', name.replace('1', rowCount));
+                }
+            });
+
+            // Update the "Delete" button's click event
+            clone.querySelector('#btnDelete').addEventListener('click', function () {
+                deleteRow(this);
+            });
+
+            table.appendChild(clone);
+
+            // Calculate the total for all rows
+            calculateTotal();
+        }
+
+        function deleteRow(button) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+
+        function submitData() {
+            // Collect and submit data to the backend here
+            var formData = new FormData();
+            var table = document.querySelector('.inventory-table');
+            var rows = table.querySelectorAll('tr');
+            rows.forEach(function (row) {
+                var inputs = row.querySelectorAll('input, select');
+                inputs.forEach(function (input) {
+                    formData.append(input.name, input.value);
+                });
+            });
+            var backendUrl = '@Url.Page("Index6")';
+            // Example: Sending formData to the backend via AJAX
+            // Replace the URL with your backend endpoint
+            fetch('your-backend-url', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data); // Handle the backend response here
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+        function calculateWorkingHours() {
+            var timeIn = new Date("2000-01-01 08:00");
+            var timeOut = new Date("2000-01-01 " + document.getElementById('txttimeout').value);
+
+            if (!isNaN(timeOut)) {
+                var timeDiff = timeOut - timeIn;
+                var hours = Math.floor(timeDiff / 1000 / 60 / 60);
+                var minutes = Math.floor((timeDiff / 1000 / 60) % 60);
+
+                var workingHours = hours + ":" + (minutes < 10 ? "0" : "") + minutes;
+                document.getElementById('txtworkinghours').value = workingHours;
+            }
+        }
+
+        // function calculateTotal() {
+        //     // Get the values entered in the Quantity and UnitPrice fields
+        //     var quantity = parseFloat(document.getElementById('txtQuantity').value) || 0;
+        //     var unitPrice = parseFloat(document.getElementById('txtUnitPrice').value) || 0;
+
+        //     // Calculate the TotalAmount
+        //     var totalAmount = quantity * unitPrice;
+
+        //     // Display the calculated TotalAmount in the TotalAmount field
+        //     document.getElementById('txtTotalAmount').value = totalAmount;
+        // }
+    </script>
+ 
+
+    <script type="text/javascript">
+        window.addEventListener('DOMContentLoaded', (evt) => {
+            const tableIds = ['Outward', 'Inward', 'Issuance', 'Receive', 'UnclosedTransactions'];
+
+            // Hide all tables by default
+            tableIds.forEach((tableId) => {
+                const table = document.getElementById(tableId);
+                if (table) {
+                    table.style.display = 'none';
+                }
+            });
+
+            const dropdown = document.getElementById('ddlTransactionType');
+            if (dropdown) {
+                dropdown.addEventListener('change', function () {
+                    const selectedValue = dropdown.value;
+                    showTable(selectedValue);
+                });
+            } else {
+                console.error("Dropdown element not found.");
+            }
+        });
+
+        function showTable(selectedValue) {
+            const tableIds = ['Outward', 'Inward', 'Issuance', 'Receive', 'UnclosedTransactions'];
+
+            // Hide all tables by default
+            tableIds.forEach((tableId) => {
+                const table = document.getElementById(tableId);
+                if (table) {
+                    table.style.display = 'none';
+                }
+            });
+
+            // Show the table based on the selected option
+            const selectedTableId = `${selectedValue.charAt(0).toUpperCase()}${selectedValue.slice(1)}`;
+            const selectedTable = document.getElementById(selectedTableId);
+            if (selectedTable) {
+                selectedTable.style.display = 'block';
+            } else {
+                return false;
+            }
+        }
+
+
+
+        function isNumeric(evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+
+            // Allow numeric digits (0-9), backspace, arrow keys, and the period ('.') character
+            if ((charCode >= 48 && charCode <= 57) || charCode === 8 || charCode === 37 || charCode === 39 || charCode === 46) {
+                return true;
+            }
+        }
+
+
+
+
+        function updateClock() {
+            var now = new Date();
+            var clockElement = document.getElementById('clock');
+            clockElement.innerHTML = now.toLocaleString('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+        }
+
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+
+        // Initial update
+        updateClock();
+
+    </script>
 
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -492,4 +707,5 @@
     <script src="~/js/material-dashboard.min.js"></script>
 
 </body>
+
 </html>

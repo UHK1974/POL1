@@ -5,68 +5,75 @@ using System.Data;
 
 namespace POL1.Pages
 {
-    public class Index2Model : PageModel
+    public class Index8Model : PageModel
     {
 
-        // Model properties
-        //[BindProperty]
-        //public string Date { get; set; }
+        [BindProperty]
+        public string Date { get; set; } = "";
 
         [BindProperty]
-        public string ItemName { get; set; } = "";
+        public string EmployeeID { get; set; } = "";
 
         [BindProperty]
-        public string Description { get; set; } = "";
-        [BindProperty]
-        public string ItemCode { get; set; } = "";
+        public string EmployeeName { get; set; } = "";
 
         [BindProperty]
-        public string Category { get; set; } = "";
+        public string FatherName { get; set; } = "";
 
         [BindProperty]
-        public string UOM { get; set; } = "";
+        public string JoiningDate { get; set; } = "";
+
         [BindProperty]
-        public string Packing { get; set; } = "";
+        public string DateOfLeaving { get; set; } = "";
+
+        [BindProperty]
+        public string CNICNumber { get; set; } = "";
+
+        [BindProperty]
+        public string EOBINumber { get; set; } = "";
+
+        [BindProperty]
+        public string Department { get; set; } = "";
+
+        [BindProperty]
+        public string SocialSecurityNumber { get; set; } = "";
+        
+        [BindProperty]
+        public string Address { get; set; } = "";
+
+        [BindProperty]
+        public string Salary { get; set; } = "";
+
+        [BindProperty]
+        public string ContractorName { get; set; } = "";
 
         public void OnGet()
         {
-
         }
-
         public IActionResult OnPost()
         {
-            //DateTime myDate = DateTime.Now;
-
-
-            string tableName = "AddItem"; // Change this based on your needs
+            string tableName = "ContractorStaff"; 
             Dictionary<string, object> data = new Dictionary<string, object>
 
             {
-                //{ "Date", myDate },
-                { "ItemName", ItemName },
-                { "ItemCode", ItemCode },
-                { "Description", Description },
-                { "Category", Category },
-                { "UOM", UOM },
-                { "Packing", Packing },
-             };
+                { "Date", Date },
+                { "EmployeeID", EmployeeID },
+                { "EmployeeName", EmployeeName },
+                { "FatherName", FatherName },
+                { "JoiningDate", JoiningDate },
+                { "DateOfLeaving", DateOfLeaving },
+                { "CNICNumber", CNICNumber },
+                { "EOBINumber", EOBINumber },
+                { "Department", Department },
+                { "SocialSecurityNumber", SocialSecurityNumber },
+                { "Address", Address },
+                { "Salary", Salary },
+                { "ContractorName", ContractorName },
+            };
 
             InsertData(tableName, data);
 
-            Dictionary<string, object> data2 = new Dictionary<string, object>
-
-            {
-                //{ "Date", myDate },
-                { "ItemName", ItemName },
-                { "ItemCode", ItemCode },
-                { "Description", Description },
-                { "Category", Category },
-                { "UOM", UOM },
-                { "StockInHand", "0" },
-                { "Status","Non-Returnable"},
-             };
-            InsertData("MainInventory", data2);
-            return RedirectToPage("/Index2");
+            return RedirectToPage("/Index8");
         }
 
         private static void InsertData(string tableName, Dictionary<string, object> data)
@@ -94,8 +101,8 @@ namespace POL1.Pages
                     }
                     else
                     {
-                    command.Parameters.Add($"@{entry.Key}", GetSqlDbType(entry.Value)).Value = entry.Value;
-                     }
+                        command.Parameters.Add($"@{entry.Key}", GetSqlDbType(entry.Value)).Value = entry.Value;
+                    }
                 }
 
                 command.ExecuteNonQuery();

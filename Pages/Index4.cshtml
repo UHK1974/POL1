@@ -1,5 +1,5 @@
 ﻿@page
-@model Pages.Index3Model
+@model Pages.Index4Model
 @{
 }
 <!DOCTYPE html>
@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <title>
-        Add New Suplier
+        Project
     </title>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -111,8 +111,9 @@
 
         /* Improved Styles for Textboxes and Labels */
         /* Textbox Styles */
-        input[type="text"],
+        input[type="text"], 
         input[type="date"],
+        input[type="datetime"]
         select,
         textarea {
             width: 100%;
@@ -205,7 +206,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="/Index4">
+                    <a class="nav-link text-white active  bg-gradient-primary  " href="/Index4">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
                         </div>
@@ -237,7 +238,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white active  bg-gradient-primary " href="/Index3">
+                    <a class="nav-link text-white " href="/Index3">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">notifications</i>
                         </div>
@@ -291,9 +292,9 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                         <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Add New Supplier</li>
+                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Project</li>
                     </ol>
-                    <h6 class="font-weight-bolder mb-0">Add New Supplier</h6>
+                    <h6 class="font-weight-bolder mb-0">Project</h6>
                 </nav>
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -303,7 +304,7 @@
                         </div>
                     </div>
                     <ul class="navbar-nav  justify-content-end">
-                      
+
                         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                                 <div class="sidenav-toggler-inner">
@@ -332,74 +333,104 @@
         <!-- End Navbar --><!-- End Navbar --><!-- End Navbar --><!-- End Navbar --><!-- End Navbar -->
         <div class="container-fluid ">
 
-           
 
 
-                <div id="entry">
-                     
-                    <h2>Add New Supplier</h2>
+
+            <div id="entry">
+
+                <h2>Project</h2>
                 <form id="form1" runat="server" method="post">
-                        <table id="entryTable">
-                        @* <tr>
-                            <td>
-                                <label for="txtDate">Date:</label>
-                            </td>
-                            <td>
-                                <input type="date" id="txtDate" name="txtDate" asp-for="Date" />
-                            </td>
-                        </tr> *@
+                    <table id="entryTable">
+                        <tr>
+                        <td>
+                        <label for="txtDate">Date:</label>
+                        </td>
+                        <td>
+                        <input type="date" id="txtDate"  asp-for="Date" />
+                        </td>
+                        </tr>
 
                         <tr>
                             <td>
-                                <label for="textbox1">Supplier Name:</label>
+                                <label for="textbox1">Project ID:</label>
                             </td>
                             <td>
-                                <input type="text" id="textbox1" asp-for="SupplierName" />
+                                <input type="text" id="textbox1" asp-for="ProjectID" />
                             </td>
                             <td>
-                                <label for="textbox2">Supplier Code:</label>
+                                <label for="textbox2">Project Name:</label>
                             </td>
                             <td>
-                                <input type="text" id="textbox2" asp-for="SupplierCode" />
+                                <input type="text" id="textbox2" asp-for="ProjectName" />
                             </td>
                         </tr>
 
                         <tr>
                             <td>
-                                <label for="textbox3">Contact Person:</label>
+                                <label for="textbox3">Start Date:</label>
                             </td>
                             <td>
-                                <input type="text" id="textbox3" asp-for="ContactPerson" />
+                                <input type="date" id="textbox3" asp-for="StartDate" />
                             </td>
                             <td>
-                                <label for="textbox4">Contact Number:</label>
+                                <label for="textbox4">End Date:</label>
                             </td>
                             <td>
-                                <input type="text" id="textbox4" asp-for="ContactNumber" />
+                                <input type="date" id="textbox4" asp-for="EndDate" />
                             </td>
                         </tr>
 
                         <tr>
                             <td>
-                                <label for="textbox5">Address:</label>
+                                <label for="textbox5">Service Company:</label>
                             </td>
                             <td>
-                                <input type="text" id="textbox5" asp-for="Address" />
+                                <input type="text" id="textbox5" asp-for="ServiceCompany" />
+                            </td>
+                            <td>
+                                <label for="textbox5">Tean Lead Name:</label>
+                            </td>
+                            <td>
+                                <input type="text" id="textbox5" asp-for="TeamLeadName" />
                             </td>
                         </tr>
-
+                        <tr>
+                            <td>
+                                <label for="textbox5">Total Team Member:</label>
+                            </td>
+                            <td>
+                                <input type="text" id="textbox5" asp-for="TotalTeamMember" />
+                            </td>
+                            <td>
+                                <label for="Status1">Status:</label>
+                            </td>
+                            <td style="padding: 10px;">
+                                <select id="Status1" type="ddlStatus1" asp-for="Status">
+                                    <option value="InProgress">In Progress</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="irTextBox4">Project Scope:</label>
+                            </td>
+                            <td colspan="3">
+                                <textarea id="irTextBox4" rows="3" cols="40" asp-for="ProjectScope"></textarea>
+                            </td>
+                        </tr>
                         <tr>
                             <td colspan="4">
                                 <button id="btnSubmit" type="submit">Submit</button>
                             </td>
                         </tr>
-                      </table>
-                    </form>
-                </div>
-                <div id="dateTime">
-                    <span id="clock"></span>
-                </div>
-           
+                    </table>
+                </form>
+            </div>
+            <div id="dateTime">
+                <span id="clock"></span>
+            </div>
+
         </div>
 
 
